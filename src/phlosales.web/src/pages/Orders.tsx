@@ -7,9 +7,8 @@ import {
   Table,
   Text,
 } from "@mantine/core";
-import React, { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Loading } from "../components";
 import { useAxiosPrivate } from "../hooks";
 import { ISalesOrderList } from "../interface";
 import { useStyles } from "../styles";
@@ -22,19 +21,20 @@ export const OrdersPage: FC<IOrdersPage> = () => {
   const [loading, setLoading] = useState(false);
   const { classes } = useStyles();
 
+  const getSalesOrder = async () => {
+    setLoading(true);
+    const response = await axiosPrivate.get("methods/salesorder.list");
+    const result = response?.data;
+
+    if (response.status === 200) {
+      setSalesOrderList(result?.salesOrders);
+    }
+    setLoading(false);
+  };
+
   useEffect(() => {
-    const getSalesOrder = async () => {
-      setLoading(true);
-      const response = await axiosPrivate.get("methods/salesorder.list");
-      const result = response?.data;
-
-      if (response.status === 200) {
-        setSalesOrderList(result?.salesOrders);
-      }
-      setLoading(false);
-    };
-
     getSalesOrder();
+    // eslint-disable-next-line
   }, []);
 
   const rows = salesOrderList.map((s) => (

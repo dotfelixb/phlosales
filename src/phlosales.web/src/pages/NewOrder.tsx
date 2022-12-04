@@ -69,7 +69,8 @@ export const NewOrderPage: FC<INewOrderPage> = () => {
       );
 
       if (response.status !== 201) {
-        throw "error";
+        const err = "error";
+        throw err;
       }
 
       return response?.data?.id;
@@ -93,7 +94,8 @@ export const NewOrderPage: FC<INewOrderPage> = () => {
       );
 
       if (response.status !== 201) {
-        throw "error";
+        const err = "error";
+        throw err;
       }
 
       return response?.data?.id;
@@ -138,35 +140,37 @@ export const NewOrderPage: FC<INewOrderPage> = () => {
     }
   };
 
+  const getCustomers = async () => {
+    const response = await axiosPrivate.get("methods/customer.list");
+    const result = response?.data;
+    if (response.status === 200) {
+      setCustomerList(
+        result?.customers.map((c: ICustomer) => ({
+          value: c.id,
+          label: c.name,
+        }))
+      );
+    }
+  };
+
+  const getProducts = async () => {
+    const response = await axiosPrivate.get("methods/product.list");
+    const result = response?.data;
+    if (response.status === 200) {
+      setProductList(
+        result?.products.map((p: IProduct) => ({
+          value: p.id,
+          label: p.name,
+        }))
+      );
+    }
+  };
+  
   useEffect(() => {
-    const getCustomers = async () => {
-      const response = await axiosPrivate.get("methods/customer.list");
-      const result = response?.data;
-      if (response.status === 200) {
-        setCustomerList(
-          result?.customers.map((c: ICustomer) => ({
-            value: c.id,
-            label: c.name,
-          }))
-        );
-      }
-    };
-
-    const getProducts = async () => {
-      const response = await axiosPrivate.get("methods/product.list");
-      const result = response?.data;
-      if (response.status === 200) {
-        setProductList(
-          result?.products.map((p: IProduct) => ({
-            value: p.id,
-            label: p.name,
-          }))
-        );
-      }
-    };
-
     getCustomers();
     getProducts();
+
+    // eslint-disable-next-line
   }, []);
 
   return (

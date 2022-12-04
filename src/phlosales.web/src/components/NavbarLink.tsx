@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { TablerIcon } from "@tabler/icons";
-import { Center, createStyles, Tooltip, Text } from "@mantine/core";
+import { Center, createStyles, Tooltip } from "@mantine/core";
 import { Link, useLocation } from "react-router-dom";
 
 const styles = createStyles((theme) => ({

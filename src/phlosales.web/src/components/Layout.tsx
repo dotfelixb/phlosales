@@ -1,5 +1,5 @@
 import { createStyles } from "@mantine/core";
-import { IconAssembly, IconDiscount2, IconGauge, IconSettings, IconUser, TablerIcon } from "@tabler/icons";
+import { IconAssembly, IconDiscount2, IconGauge, IconUser, TablerIcon } from "@tabler/icons";
 import React, { FC } from "react";
 import { Outlet } from "react-router-dom";
 import { NavbarLink } from "./NavbarLink";
