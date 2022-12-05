@@ -30,4 +30,8 @@ export const useStyles = createStyles((theme) => ({
     backgroundColor: "#F9FAFF",
     borderColor: theme.colors.indigo[1],
   },
+  cardSection: {
+    overflow: "unset",
+    backgroundColor: "#F9FAFF",
+  },
 }));

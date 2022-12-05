@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import {
+  Breadcrumbs,
   Button,
   Card,
   Center,
@@ -17,7 +18,7 @@ import { IconPlus, IconX } from "@tabler/icons";
 import { useAxiosPrivate } from "../hooks";
 import { ICustomer, IProduct, ISelectedItem } from "../interface";
 import { showNotification } from "@mantine/notifications";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface INewOrderPage {}
 
@@ -165,7 +166,7 @@ export const NewOrderPage: FC<INewOrderPage> = () => {
       );
     }
   };
-  
+
   useEffect(() => {
     getCustomers();
     getProducts();
@@ -173,9 +174,25 @@ export const NewOrderPage: FC<INewOrderPage> = () => {
     // eslint-disable-next-line
   }, []);
 
+  const items = [
+    { title: "Dashboard", href: "/" },
+    { title: "Sales Order", href: "/orders" },
+  ].map((item, index) => (
+    <Link
+      to={item.href}
+      key={index}
+      style={{ cursor: "pointer", fontSize: 12 }}
+    >
+      {item.title}
+    </Link>
+  ));
+
   return (
     <div className={classes.pageView}>
       <header>
+        <div>
+          <Breadcrumbs>{items}</Breadcrumbs>
+        </div>
         <Group position="apart" my="lg">
           <Group position="left">
             <Text weight="bold" size={24}>

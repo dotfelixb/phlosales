@@ -27,3 +27,12 @@ export interface ISalesOrderList {
   product: string;
   price: number;
 }
+
+export interface ISalesUnit  {
+  productId:  number;
+  product:string;
+  unit: number;
+  gross:  number;
+  highestPrice: number;
+  lowestPrice:  number;
+}

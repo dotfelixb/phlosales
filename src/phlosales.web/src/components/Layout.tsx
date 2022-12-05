@@ -43,12 +43,12 @@ interface INavLink {
 const links: INavLink[] = [
   { icon: IconGauge, label: "Dashboard", to: "" },
   { icon: IconDiscount2, label: "Sales Order", to: "orders" },
-  {
-    icon: IconUser,
-    label: "Customer",
-    to: "customers",
-  },
-  { icon: IconAssembly, label: "Products", to: "products" },
+  // {
+  //   icon: IconUser,
+  //   label: "Customer",
+  //   to: "customers",
+  // },
+  // { icon: IconAssembly, label: "Products", to: "products" },
 ];
 
 export const Layout: FC<ILayout> = ({ children }) => {

@@ -1,4 +1,5 @@
 import {
+  Breadcrumbs,
   Button,
   Card,
   Center,
@@ -51,9 +52,24 @@ export const OrdersPage: FC<IOrdersPage> = () => {
     </tr>
   ));
 
+  const items = [
+    { title: "Dashboard", href: "/" },
+  ].map((item, index) => (
+    <Link
+      to={item.href}
+      key={index}
+      style={{ cursor: "pointer", fontSize: 12 }}
+    >
+      {item.title}
+    </Link>
+  ));
+
   return (
     <div className={classes.pageView}>
       <header>
+        <div>
+          <Breadcrumbs>{items}</Breadcrumbs>
+        </div>
         <Group position="apart" my="lg">
           <Group position="left">
             <Text weight="bold" size={24}>

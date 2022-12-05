@@ -39,6 +39,6 @@ public class CustomerController : MethodsController
         if (rst.IsFailed) { return BadRequest(rst); }
 
         var routeData = new { id = rst.Value };
-        return CreatedAtAction(actionName: nameof(GetCustomer), routeValues: routeData , value: routeData);
+        return CreatedAtAction(actionName: nameof(GetCustomer), routeValues: routeData, value: routeData);
     }
 }
