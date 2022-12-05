@@ -8,8 +8,7 @@ import {
   Table,
   Text,
 } from "@mantine/core";
-import React, { FC, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { FC, useEffect, useState } from "react";
 import { useAxiosPrivate } from "../hooks";
 import { ISalesUnit } from "../interface";
 import { useStyles } from "../styles";
@@ -47,19 +46,21 @@ export const HomePage: FC<IHomePage> = () => {
   };
 
   const getOrderedUnit = async () => {
-    setLoadGrossing(true);
+    setLoadOrdered(true);
     const response = await axiosPrivate.get("methods/dashboard.ordered");
 
     if (response.status === 200) {
       setOrderedUnits(response?.data?.units);
     }
-    setLoadGrossing(false);
+    setLoadOrdered(false);
   };
 
   useEffect(() => {
     getSellingUnit();
     getGrossingUnit();
     getOrderedUnit();
+
+    // eslint-disable-next-line
   }, []);
 
   const sellingRows = sellingUnits.map((u) => (
@@ -107,14 +108,8 @@ export const HomePage: FC<IHomePage> = () => {
     </tr>
   ));
 
-  const items = [
-    { title: "Dashboard", href: "/" },
-  ].map((item, index) => (
-    <span
-     
-      key={index}
-      style={{ cursor: "pointer", fontSize: 12 }}
-    >
+  const items = [{ title: "Dashboard", href: "/" }].map((item, index) => (
+    <span key={index} style={{ cursor: "pointer", fontSize: 12 }}>
       {item.title}
     </span>
   ));
@@ -250,7 +245,7 @@ export const HomePage: FC<IHomePage> = () => {
                   ) : (
                     <tr>
                       <td colSpan={5}>
-                        {loadGrossing ? (
+                        {loadOrdered ? (
                           <Center py="lg">
                             <Loader color="indigo" />
                           </Center>

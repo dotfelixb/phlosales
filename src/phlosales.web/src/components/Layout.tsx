@@ -1,5 +1,9 @@
 import { createStyles } from "@mantine/core";
-import { IconAssembly, IconDiscount2, IconGauge, IconUser, TablerIcon } from "@tabler/icons";
+import {
+  IconDiscount2,
+  IconGauge,
+  TablerIcon,
+} from "@tabler/icons";
 import React, { FC } from "react";
 import { Outlet } from "react-router-dom";
 import { NavbarLink } from "./NavbarLink";
@@ -43,12 +47,6 @@ interface INavLink {
 const links: INavLink[] = [
   { icon: IconGauge, label: "Dashboard", to: "" },
   { icon: IconDiscount2, label: "Sales Order", to: "orders" },
-  // {
-  //   icon: IconUser,
-  //   label: "Customer",
-  //   to: "customers",
-  // },
-  // { icon: IconAssembly, label: "Products", to: "products" },
 ];
 
 export const Layout: FC<ILayout> = ({ children }) => {
