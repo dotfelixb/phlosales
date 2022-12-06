@@ -1,15 +1,10 @@
 ﻿using AutoMapper;
 using FluentResults;
-using MediatR; 
+using MediatR;
 using PhloSales.Data;
 using PhloSales.Data.Entities;
 
 namespace PhloSales.Server.Features.ProductFeatures.CreateProduct;
-
-public class CreateProductCommand : IRequest<Result<int>>
-{
-    public string Name { get; set; }
-}
 
 public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, Result<int>>
 {

@@ -1,19 +1,10 @@
 ﻿using AutoMapper;
 using FluentResults;
-using MediatR; 
+using MediatR;
 using PhloSales.Data;
 using PhloSales.Data.Entities;
 
 namespace PhloSales.Server.Features.ProductFeatures.GetProduct;
-
-public class GetProductQueryResult : ProductQueryResult
-{
-}
-
-public class GetProductQuery : IRequest<Result<GetProductQueryResult>>
-{
-    public int Id { get; set; }
-}
 
 public class GetProductQueryHandler : IRequestHandler<GetProductQuery, Result<GetProductQueryResult>>
 {

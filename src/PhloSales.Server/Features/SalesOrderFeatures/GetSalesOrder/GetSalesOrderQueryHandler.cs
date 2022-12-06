@@ -1,21 +1,12 @@
 ﻿using AutoMapper;
 using FluentResults;
-using MediatR; 
+using MediatR;
 using PhloSales.Data;
 using PhloSales.Data.Entities;
 
 namespace PhloSales.Server.Features.SalesOrderFeatures.GetSalesOrder;
 
-public class GetSalesOrderQueryResult : SalesOrderQueryResult
-{
-}
-
-public class GetSalesOrderQuery : IRequest<Result<GetSalesOrderQueryResult>>
-{
-    public int Id { get; set; }
-}
-
-internal class GetSalesOrderQueryHandler : IRequestHandler<GetSalesOrderQuery, Result<GetSalesOrderQueryResult>>
+public class GetSalesOrderQueryHandler : IRequestHandler<GetSalesOrderQuery, Result<GetSalesOrderQueryResult>>
 {
     private readonly ILogger<GetSalesOrderQueryHandler> _logger;
     private readonly IUnitOfWork _unitOfWork;

@@ -11,7 +11,8 @@ services:
       interval: 10s
       timeout: 3s
       retries: 10
-      start_period: 10s      
+      start_period: 10s
+
     ports:
       - "1433:1433"
     volumes:
@@ -22,28 +23,36 @@ services:
     build:
       context: .
       dockerfile: src/PhloSales.Auth/Dockerfile
-    environment:
-        - CONNECTION_STRING=Server=tcp:sqlserver,1433;Database=phloauth;User Id=sa;Password=Pass@word;
-        - BEARER_KEY=8833933cf99240db9389db678345b119
-    ports:
-      - 5001:80
     depends_on:
       sqlserver:
         condition: service_healthy 
+    environment:
+        - CONNECTION_STRING=Server=tcp:sqlserver,1433;Database=phloauth;User Id=sa;Password=Pass@word;Integrated Security=false;TrustServerCertificate=true
+        - BEARER_KEY=8833933cf99240db9389db678345b119
+    ports:
+      - 5001:80
 
   phlosales.server:
     image: ${DOCKER_REGISTRY-}phlosalesserver
     build:
       context: .
       dockerfile: src/PhloSales.Server/Dockerfile
+    depends_on:
+      sqlserver:
+        condition: service_healthy
     environment:
-        - CONNECTION_STRING=Server=tcp:sqlserver,1433;Database=phlosales;User Id=sa;Password=Pass@word;
+        - CONNECTION_STRING=Server=tcp:sqlserver,1433;Database=phlosales;User Id=sa;Password=Pass@word;Integrated Security=false;TrustServerCertificate=true
         - BEARER_KEY=8833933cf99240db9389db678345b119
     ports:
       - 5002:80
-    depends_on:
-      sqlserver:
-        condition: service_healthy 
+
+  phlosales.web:
+    image: ${DOCKER_REGISTRY-}phloweb
+    build:
+      context: .
+      dockerfile: src/phlosales.web/Dockerfile
+    ports:
+      - 3000:3000
 
   phlosales.loadbalancer:
     image: ${DOCKER_REGISTRY-}phlolb
@@ -52,9 +61,6 @@ services:
       dockerfile: src/nginx/Dockerfile
     ports:
       - 5000:5000
-    depends_on:
-      - phlosales.auth
-      - phlosales.server
 
 volumes:
   sqldata:

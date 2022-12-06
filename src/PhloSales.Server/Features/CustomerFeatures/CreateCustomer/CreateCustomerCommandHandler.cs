@@ -7,11 +7,6 @@ using PhloSales.Data.Entities;
 
 namespace PhloSales.Server.Features.CustomerFeatures.CreateCustomer;
 
-public class CreateCustomerCommand : IRequest<Result<int>>
-{
-    public string Name { get; set; }
-}
-
 public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, Result<int>>
 {
     private readonly ILogger<CreateCustomerCommandHandler> _logger;

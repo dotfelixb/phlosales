@@ -1,8 +1,7 @@
-import { FC } from "react";
-import { Navigate, Outlet, useLocation } from "react-router-dom"; 
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useApp } from "../context";
 
-export const RequireAuth  = () => {
+export const RequireAuth = () => {
   const { auth } = useApp();
   const location = useLocation();
 
@@ -12,5 +11,3 @@ export const RequireAuth  = () => {
     <Navigate to="/login" state={{ from: location }} replace />
   );
 };
-
-

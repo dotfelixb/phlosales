@@ -7,18 +7,6 @@ using PhloSales.Data.Entities;
 
 namespace PhloSales.Server.Features.CustomerFeatures.ListCustomer;
 
-public class ListCustomerQueryResult
-{
-    public List<CustomerQueryResult> Customers { get; set; }
-    public int PageSize { get; set; }
-}
-
-public class ListCustomerQuery : IRequest<Result<ListCustomerQueryResult>>
-{
-    public int Limit { get; set; } = 10;
-    public int Offset { get; set; } = 0;
-}
-
 public class ListCustomerQueryHandler : IRequestHandler<ListCustomerQuery, Result<ListCustomerQueryResult>>
 {
     private readonly ILogger<ListCustomerQueryHandler> _logger;

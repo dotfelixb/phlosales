@@ -7,15 +7,6 @@ using PhloSales.Data.Entities;
 
 namespace PhloSales.Server.Features.CustomerFeatures.GetCustomer;
 
-public class GetCustomerQueryResult : CustomerQueryResult
-{
-}
-
-public class GetCustomerQuery : IRequest<Result<GetCustomerQueryResult>>
-{
-    public int Id { get; set; }
-}
-
 public class GetCustomerQueryHandler : IRequestHandler<GetCustomerQuery, Result<GetCustomerQueryResult>>
 {
     private readonly ILogger<GetCustomerQueryHandler> _logger;

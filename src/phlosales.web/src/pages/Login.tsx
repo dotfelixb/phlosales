@@ -2,16 +2,14 @@ import {
   Card,
   TextInput,
   PasswordInput,
-  Checkbox,
   Group,
   Button,
-  UnstyledButton,
   Text,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { IconEyeOff, IconEyeCheck } from "@tabler/icons";
-import React, { FC, useEffect, useState } from "react";
-import { useNavigate, useLocation, useSearchParams } from "react-router-dom";
+import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 import { useApp } from "../context";
 import axios from "../context/axios";
 import { ILoginResult } from "../interface";
@@ -21,9 +19,8 @@ interface ILoginPage {}
 
 export const LoginPage: FC<ILoginPage> = () => {
   const navigate = useNavigate();
-  const { state } = useLocation();
   const { classes } = useStyles();
-  const { auth, setAuth } = useApp();
+  const { setAuth } = useApp();
 
   const form = useForm({
     initialValues: { username: "", password: "" },
@@ -77,14 +74,14 @@ export const LoginPage: FC<ILoginPage> = () => {
                 py={34}
               >
                 <TextInput
-                  styles={(theme) => ({
+                  styles={() => ({
                     input: classes.input,
                   })}
                   label="Email"
                   {...form.getInputProps("username")}
                 />
                 <PasswordInput
-                  styles={(theme) => ({
+                  styles={() => ({
                     input: classes.input,
                   })}
                   mt="md"
