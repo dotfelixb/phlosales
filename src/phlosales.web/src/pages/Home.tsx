@@ -141,7 +141,7 @@ export const HomePage: FC<IHomePage> = () => {
               p={0}
             >
               <Card.Section p="xs" className={classes.cardSection}>
-                <Text weight={500}>Highest Selling Unit</Text>
+                <Text weight={600}>Highest Selling Unit</Text>
               </Card.Section>
 
               <Table sx={{ tableLayout: "fixed" }}>
@@ -183,7 +183,7 @@ export const HomePage: FC<IHomePage> = () => {
               p={0}
             >
               <Card.Section p="xs" className={classes.cardSection}>
-                <Text weight={500}>Highest Grossing Unit</Text>
+                <Text weight={600}>Highest Grossing Unit</Text>
               </Card.Section>
 
               <Table sx={{ tableLayout: "fixed" }}>
@@ -226,7 +226,7 @@ export const HomePage: FC<IHomePage> = () => {
               p={0}
             >
               <Card.Section p="xs" className={classes.cardSection}>
-                <Text weight={500}>Ordered Unit (High and Low)</Text>
+                <Text weight={600}>Ordered Unit (High and Low)</Text>
               </Card.Section>
 
               <Table sx={{ tableLayout: "fixed" }}>
