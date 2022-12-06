@@ -65,7 +65,7 @@ export const NewOrderPage: FC<INewOrderPage> = () => {
   const onCreateCustomer = (query: string) => {
     const createNew = async (): Promise<number> => {
       const response = await axiosPrivate.post(
-        "methods/customer.create",
+        "sales/customer.create",
         JSON.stringify({ name: query })
       );
 
@@ -90,7 +90,7 @@ export const NewOrderPage: FC<INewOrderPage> = () => {
   const onCreateProduct = (query: string) => {
     const createNew = async (): Promise<number> => {
       const response = await axiosPrivate.post(
-        "methods/product.create",
+        "sales/product.create",
         JSON.stringify({ name: query })
       );
 
@@ -126,7 +126,7 @@ export const NewOrderPage: FC<INewOrderPage> = () => {
 
     const values = JSON.stringify(form.values.request);
     const response = await axiosPrivate.post(
-      "methods/salesorder.create",
+      "sales/salesorder.create",
       values
     );
 
@@ -142,7 +142,7 @@ export const NewOrderPage: FC<INewOrderPage> = () => {
   };
 
   const getCustomers = async () => {
-    const response = await axiosPrivate.get("methods/customer.list");
+    const response = await axiosPrivate.get("sales/customer.list");
     const result = response?.data;
     if (response.status === 200) {
       setCustomerList(
@@ -155,7 +155,7 @@ export const NewOrderPage: FC<INewOrderPage> = () => {
   };
 
   const getProducts = async () => {
-    const response = await axiosPrivate.get("methods/product.list");
+    const response = await axiosPrivate.get("sales/product.list");
     const result = response?.data;
     if (response.status === 200) {
       setProductList(

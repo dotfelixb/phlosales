@@ -34,4 +34,17 @@ export const useStyles = createStyles((theme) => ({
     overflow: "unset",
     backgroundColor: "#F9FAFF",
   },
+  container: {
+    display: "flex",
+    width: "100vw",
+    height: "100vh",
+    position: "relative",
+    overflow: "hidden",
+  },
+  loginMain: {
+    display: "flex",
+    flex: 1,
+    position: "relative",
+    height: "100%",
+  }
 }));

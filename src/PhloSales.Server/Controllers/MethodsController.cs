@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace PhloSales.Server.Controllers;
 
 [ApiController]
-[Route("methods")]
+[Route("sales")]
+[Authorize]
 public class MethodsController : ControllerBase
 {
-
 }

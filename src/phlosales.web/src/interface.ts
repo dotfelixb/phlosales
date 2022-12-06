@@ -1,8 +1,17 @@
+import React from "react";
+
 export interface IViewProps {
   children?: React.ReactNode;
 }
 
-export interface IAppContext {}
+export interface IAuth {
+  accessToken: string;
+  isAuthenticated: boolean;
+}
+export interface IAppContext {
+  auth: IAuth;
+  setAuth: React.Dispatch<React.SetStateAction<IAuth>>;
+}
 
 export interface ICustomer {
   id: number;
@@ -35,4 +44,8 @@ export interface ISalesUnit  {
   gross:  number;
   highestPrice: number;
   lowestPrice:  number;
+}
+
+export interface ILoginResult {
+  accessToken: string;
 }

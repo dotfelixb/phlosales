@@ -24,7 +24,7 @@ export const OrdersPage: FC<IOrdersPage> = () => {
 
   const getSalesOrder = async () => {
     setLoading(true);
-    const response = await axiosPrivate.get("methods/salesorder.list");
+    const response = await axiosPrivate.get("sales/salesorder.list");
     const result = response?.data;
 
     if (response.status === 200) {

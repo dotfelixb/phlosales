@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using PhloSales.Core.Features.SalesOrderFeatures.CreateSalesOrder;
-using PhloSales.Core.Features.SalesOrderFeatures.GetSalesOrder;
-using PhloSales.Core.Features.SalesOrderFeatures.ListSalesOrder;
+using PhloSales.Server.Features.SalesOrderFeatures.CreateSalesOrder;
+using PhloSales.Server.Features.SalesOrderFeatures.GetSalesOrder;
+using PhloSales.Server.Features.SalesOrderFeatures.ListSalesOrder;
 
 namespace PhloSales.Server.Controllers;
 

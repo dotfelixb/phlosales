@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using PhloSales.Core.Features.DashboardFeature.GrossingUnit;
-using PhloSales.Core.Features.DashboardFeature.OrderedUnit;
-using PhloSales.Core.Features.DashboardFeature.SellingUnit;
+using PhloSales.Server.Features.DashboardFeature.GrossingUnit;
+using PhloSales.Server.Features.DashboardFeature.OrderedUnit;
+using PhloSales.Server.Features.DashboardFeature.SellingUnit;
 
 namespace PhloSales.Server.Controllers;
 

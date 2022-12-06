@@ -11,13 +11,42 @@ services:
     volumes:
       - sqldata:/var/opt/mssql
 
+  phlosales.auth:
+    image: ${DOCKER_REGISTRY-}phlosalesauth
+    build:
+      context: .
+      dockerfile: src/PhloSales.Auth/Dockerfile
+    environment:
+        - CONNECTION_STRING=Server=tcp:sqlserver,1433;Database=phloauth;User Id=sa;Password=Pass@word;
+        - BEARER_KEY=8833933cf99240db9389db678345b119
+    ports:
+      - 5001:80
+    depends_on:
+      - sqlserver
+
   phlosales.server:
     image: ${DOCKER_REGISTRY-}phlosalesserver
     build:
       context: .
       dockerfile: src/PhloSales.Server/Dockerfile
+    environment:
+        - CONNECTION_STRING=Server=tcp:sqlserver,1433;Database=phlosales;User Id=sa;Password=Pass@word;
+        - BEARER_KEY=8833933cf99240db9389db678345b119
     ports:
-      - 5000:80
+      - 5002:80
+    depends_on:
+      - sqlserver
+
+  phlosales.loadbalancer:
+    image: ${DOCKER_REGISTRY-}phlolb
+    build:
+      context: .
+      dockerfile: src/nginx/Dockerfile
+    ports:
+      - 5000:5000
+    depends_on:
+      - phlosales.auth
+      - phlosales.server
 
 volumes:
   sqldata:

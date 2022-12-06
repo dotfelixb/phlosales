@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhloSales.Data", "src\PhloS
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{149EC63D-D4E8-4FFB-9086-01FD8A46928A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhloSales.Auth", "src\PhloSales.Auth\PhloSales.Auth.csproj", "{08ADA141-F0F7-4724-B9FB-7EB4BA7EF297}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{149EC63D-D4E8-4FFB-9086-01FD8A46928A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{149EC63D-D4E8-4FFB-9086-01FD8A46928A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{149EC63D-D4E8-4FFB-9086-01FD8A46928A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08ADA141-F0F7-4724-B9FB-7EB4BA7EF297}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08ADA141-F0F7-4724-B9FB-7EB4BA7EF297}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08ADA141-F0F7-4724-B9FB-7EB4BA7EF297}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08ADA141-F0F7-4724-B9FB-7EB4BA7EF297}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +58,7 @@ Global
 		{629D0411-8E1F-4E75-B3B3-DC0A3CC3FB14} = {6EDDCBBE-FC05-405E-A158-2FA128224F05}
 		{662EA35D-AEA5-4188-93FB-F29158B04D5D} = {6EDDCBBE-FC05-405E-A158-2FA128224F05}
 		{2DB3523D-6F84-4FB1-8D71-D5A2BBE575B2} = {6EDDCBBE-FC05-405E-A158-2FA128224F05}
+		{08ADA141-F0F7-4724-B9FB-7EB4BA7EF297} = {6EDDCBBE-FC05-405E-A158-2FA128224F05}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FF48657B-BF85-4746-BE6A-6591430719A5}

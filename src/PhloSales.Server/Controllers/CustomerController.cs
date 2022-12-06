@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using PhloSales.Core.Features.CustomerFeatures.CreateCustomer;
-using PhloSales.Core.Features.CustomerFeatures.GetCustomer;
-using PhloSales.Core.Features.CustomerFeatures.ListCustomer;
+using PhloSales.Server.Features.CustomerFeatures.CreateCustomer;
+using PhloSales.Server.Features.CustomerFeatures.GetCustomer;
+using PhloSales.Server.Features.CustomerFeatures.ListCustomer;
 
 namespace PhloSales.Server.Controllers;
 

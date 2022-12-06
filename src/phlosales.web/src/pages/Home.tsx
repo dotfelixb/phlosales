@@ -27,7 +27,7 @@ export const HomePage: FC<IHomePage> = () => {
 
   const getSellingUnit = async () => {
     setLoadSelling(true);
-    const response = await axiosPrivate.get("methods/dashboard.selling");
+    const response = await axiosPrivate.get("sales/dashboard.selling");
 
     if (response.status === 200) {
       setSellingUnits(response?.data?.units);
@@ -37,7 +37,7 @@ export const HomePage: FC<IHomePage> = () => {
 
   const getGrossingUnit = async () => {
     setLoadGrossing(true);
-    const response = await axiosPrivate.get("methods/dashboard.grossing");
+    const response = await axiosPrivate.get("sales/dashboard.grossing");
 
     if (response.status === 200) {
       setGrossingUnits(response?.data?.units);
@@ -47,7 +47,7 @@ export const HomePage: FC<IHomePage> = () => {
 
   const getOrderedUnit = async () => {
     setLoadOrdered(true);
-    const response = await axiosPrivate.get("methods/dashboard.ordered");
+    const response = await axiosPrivate.get("sales/dashboard.ordered");
 
     if (response.status === 200) {
       setOrderedUnits(response?.data?.units);
@@ -67,6 +67,12 @@ export const HomePage: FC<IHomePage> = () => {
     <tr key={u.productId}>
       <td>{u.product}</td>
       <td>{u.unit}</td>
+      <td>
+        {u.gross.toLocaleString("en-US", {
+          style: "currency",
+          currency: "usd",
+        })}
+      </td>
     </tr>
   ));
 
@@ -149,6 +155,7 @@ export const HomePage: FC<IHomePage> = () => {
                   <tr className={classes.tableHeader}>
                     <th>Product</th>
                     <th>Units Sold</th>
+                    <th>Total Gross</th>
                   </tr>
                 </thead>
                 <tbody>

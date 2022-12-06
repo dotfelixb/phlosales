@@ -3,47 +3,33 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using PhloSales.Core;
 using PhloSales.Data;
+using PhloSales.Data.EntityContext;
+using PhloSales.Data.Repositories;
+using PhloSales.Data.Seeders;
 
 namespace PhloSales.Server.Extensions;
 
 public static class ServiceCollections
 {
-    public static IServiceCollection AddDatabaseConfig(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddDatabaseConfig(this IServiceCollection services)
     {
-        services.AddTransient<IDatabaseSeeder, DatabaseSeeder>();
-        services.AddDbContext<PhloSalesDbContext>(opt => opt.AddConnectionString(configuration));
-        return services;
-    }
-    
-    private static void AddConnectionString(this DbContextOptionsBuilder options,
-        IConfiguration configuration)
-    {
-        options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")).EnableSensitiveDataLogging();
-    }
-    
-    public static IServiceCollection AddFluentValidationConfig(this IServiceCollection services)
-    {
-        services.AddValidatorsFromAssemblyContaining<IPhloSalesCore>(includeInternalTypes: true);
+        services.AddTransient<IDatabaseSeeder, SalesDatabaseSeeder>();
+        services.AddDbContext<PhloSalesDbContext>(opt => opt.AddConnectionString());
         return services;
     }
 
-    public static IServiceCollection AddMediatRConfig(this IServiceCollection services)
+    private static void AddConnectionString(this DbContextOptionsBuilder options)
     {
-        services.AddMediatR(new[] { typeof(IPhloSalesCore) });
-        return services;
-    }
-
-    public static IServiceCollection AddAutoMapperConfig(this IServiceCollection services)
-    {
-        services.AddAutoMapper(new[] { typeof(IPhloSalesCore) });
-        return services;
+        var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING")
+            ?? throw new ArgumentNullException($"CONNECTION_STRING env not provided");
+        options.UseSqlServer(connectionString)
+            .EnableSensitiveDataLogging(); // for debugging only
     }
 
     public static IServiceCollection AddApplicationConfig(this IServiceCollection services)
     {
-        services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
-        services.AddTransient<IUnitOfWork, UnitOfWork>();
+        services.AddTransient(typeof(IRepository<>), typeof(PhloSalesRepository<>));
+        services.AddTransient<IUnitOfWork, PhloSalesUnitOfWork>();
         return services;
     }
 }
-

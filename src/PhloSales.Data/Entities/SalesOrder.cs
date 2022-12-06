@@ -1,4 +1,6 @@
-﻿namespace PhloSales.Data.Entities;
+﻿
+
+namespace PhloSales.Data.Entities;
 
 public class SalesOrder : Entity
 {
