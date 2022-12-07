@@ -1,12 +1,10 @@
-﻿
-
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PhloSales.Auth.Features.UserFeatures.CreateToken;
 
 namespace PhloSales.Auth.Controllers;
- 
+
 public class UserController : MethodsController
 {
     private readonly ILogger<UserController> _logger;
@@ -26,12 +24,12 @@ public class UserController : MethodsController
         if (rst.IsFailed) { return BadRequest(rst.Reasons.FirstOrDefault()); }
         return Ok(rst.Value);
     }
-    
+
     [AllowAnonymous]
     [HttpPost("user.refreshtoken", Name = nameof(RefreshToken))]
     public async Task<IActionResult> RefreshToken()
     {
         await Task.CompletedTask;
-        return Ok(new {ok=true});
+        return Ok(new { ok = true });
     }
 }

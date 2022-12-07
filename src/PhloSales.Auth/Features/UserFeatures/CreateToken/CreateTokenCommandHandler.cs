@@ -2,7 +2,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
-using PhloSales.Core;
 using PhloSales.Data.Entities;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -13,7 +12,6 @@ namespace PhloSales.Auth.Features.UserFeatures.CreateToken;
 public class CreateTokenCommandResult
 {
     public string AccessToken { get; set; } = null!;
-    public FailedType FailedType { get; set; }
 }
 
 public class CreateTokenCommand : IRequest<Result<CreateTokenCommandResult>>
@@ -71,7 +69,6 @@ public class CreateTokenCommandHandler : IRequestHandler<CreateTokenCommand, Res
         var result = new CreateTokenCommandResult
         {
             AccessToken = tokenHandler.WriteToken(token),
-            FailedType = FailedType.None
         };
 
         return Result.Ok(result);

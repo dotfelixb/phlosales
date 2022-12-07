@@ -1,7 +1,4 @@
-﻿using FluentValidation;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
-using PhloSales.Core;
+﻿using Microsoft.EntityFrameworkCore;
 using PhloSales.Data;
 using PhloSales.Data.EntityContext;
 using PhloSales.Data.Repositories;

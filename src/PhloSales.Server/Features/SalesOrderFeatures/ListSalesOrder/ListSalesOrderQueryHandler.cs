@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using FluentResults;
-using MediatR; 
+using MediatR;
 using PhloSales.Data;
 using PhloSales.Data.Entities;
 

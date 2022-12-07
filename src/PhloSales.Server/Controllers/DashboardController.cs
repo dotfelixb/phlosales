@@ -23,14 +23,14 @@ public class DashboardController : MethodsController
         var rst = await _mediatr.Send(query);
         return Ok(rst.Value);
     }
-    
+
     [HttpGet("dashboard.grossing", Name = nameof(GrossingUnit))]
     public async Task<IActionResult> GrossingUnit([FromQuery] ListGrossingUnitQuery query)
     {
         var rst = await _mediatr.Send(query);
         return Ok(rst.Value);
     }
-    
+
     [HttpGet("dashboard.ordered", Name = nameof(OrderedUnit))]
     public async Task<IActionResult> OrderedUnit([FromQuery] ListOrderedUnitQuery query)
     {

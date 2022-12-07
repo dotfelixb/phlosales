@@ -10,8 +10,4 @@ public class PhloAuthDbContext : IdentityUserContext<ApplicationUser, int>
              : base(options)
     {
     }
-
 }
-
-
-

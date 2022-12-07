@@ -6,5 +6,4 @@ namespace PhloSales.Auth.Controllers;
 [Route("auth")]
 public class MethodsController : ControllerBase
 {
-
 }

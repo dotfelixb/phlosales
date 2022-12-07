@@ -1,8 +1,7 @@
-﻿using AutoMapper; 
+﻿using AutoMapper;
 
 public class PhloSalesAuth
 {
-
 }
 
 public class ModelProfiles : Profile

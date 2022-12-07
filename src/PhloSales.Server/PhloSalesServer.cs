@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using PhloSales.Server.Features.CustomerFeatures.GetCustomer;
 using PhloSales.Data.Entities;
 using PhloSales.Server.Features.CustomerFeatures;
 using PhloSales.Server.Features.CustomerFeatures.CreateCustomer;
+using PhloSales.Server.Features.CustomerFeatures.GetCustomer;
 using PhloSales.Server.Features.ProductFeatures;
 using PhloSales.Server.Features.ProductFeatures.CreateProduct;
 using PhloSales.Server.Features.ProductFeatures.GetProduct;
@@ -12,7 +12,6 @@ using PhloSales.Server.Features.SalesOrderFeatures.GetSalesOrder;
 
 public class PhloSalesServer
 {
-
 }
 
 public class ModelProfiles : Profile

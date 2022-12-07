@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using FluentResults;
 using MediatR;
-using Microsoft.Extensions.Logging;
 using PhloSales.Data;
 using PhloSales.Data.Entities;
 

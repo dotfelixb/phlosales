@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using FluentResults;
 using MediatR;
-using Microsoft.Extensions.Logging;
 using PhloSales.Data;
 using PhloSales.Data.Entities;
 
@@ -10,7 +9,7 @@ namespace PhloSales.Server.Features.CustomerFeatures.CreateCustomer;
 public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, Result<int>>
 {
     private readonly ILogger<CreateCustomerCommandHandler> _logger;
-    private IUnitOfWork _unitOfWork;
+    private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
 
     public CreateCustomerCommandHandler(ILogger<CreateCustomerCommandHandler> logger, IUnitOfWork unitOfWork, IMapper mapper)
@@ -22,7 +21,7 @@ public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerComman
 
     public async Task<Result<int>> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
     {
-        var customer = _mapper.Map<CreateCustomerCommand,Customer>(request);
+        var customer = _mapper.Map<CreateCustomerCommand, Customer>(request);
         await _unitOfWork.Repository<Customer>().AddAsync(customer);
         var rst = await _unitOfWork.Commit(cancellationToken);
         if (rst < 1)

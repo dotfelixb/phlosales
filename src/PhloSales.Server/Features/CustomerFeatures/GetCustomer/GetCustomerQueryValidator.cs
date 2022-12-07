@@ -2,10 +2,10 @@
 
 namespace PhloSales.Server.Features.CustomerFeatures.GetCustomer;
 
-public class GetCustomerQueryValidator:AbstractValidator<GetCustomerQuery>
+public class GetCustomerQueryValidator : AbstractValidator<GetCustomerQuery>
 {
-	public GetCustomerQueryValidator()
-	{
-		RuleFor(r => r.Id).NotEmpty().GreaterThan(0);
-	}
+    public GetCustomerQueryValidator()
+    {
+        RuleFor(r => r.Id).NotEmpty().GreaterThan(0);
+    }
 }

@@ -24,7 +24,7 @@ public class CreateSalesOrderCommandHandler : IRequestHandler<CreateSalesOrderCo
         var orders = _mapper.Map<List<CreateSalesOrderCommand>, List<SalesOrder>>(request.Request);
         await _unitOfWork.Repository<SalesOrder>().AddAsync(orders);
         var rst = await _unitOfWork.Commit(cancellationToken);
-        if(rst < 1)
+        if (rst < 1)
         {
             var err = "Not able to persist sales order";
             _logger.LogError(err);

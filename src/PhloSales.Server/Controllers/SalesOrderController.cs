@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using FluentValidation;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using PhloSales.Server.Features.SalesOrderFeatures.CreateSalesOrder;
 using PhloSales.Server.Features.SalesOrderFeatures.GetSalesOrder;
@@ -10,11 +11,13 @@ public class SalesOrderController : MethodsController
 {
     private readonly ILogger<SalesOrderController> _logger;
     private readonly IMediator _mediatr;
+    private readonly IValidator<CreateSalesOrderCommandList> _validator;
 
-    public SalesOrderController(ILogger<SalesOrderController> logger, IMediator mediatr)
+    public SalesOrderController(ILogger<SalesOrderController> logger, IMediator mediatr, IValidator<CreateSalesOrderCommandList> validator)
     {
         _logger = logger;
         _mediatr = mediatr;
+        _validator = validator;
     }
 
     [HttpGet("salesorder.get", Name = nameof(GetSalesOrder))]
@@ -36,6 +39,20 @@ public class SalesOrderController : MethodsController
     public async Task<IActionResult> CreateSalesOrder(List<CreateSalesOrderCommand> commands)
     {
         var command = new CreateSalesOrderCommandList { Request = commands };
+
+        // we need to handle validation for this object
+        var validated = await _validator.ValidateAsync(command);
+        if (!validated.IsValid)
+        {
+            var errors = validated.Errors
+                .Select(s => new
+                {
+                    error = s.ErrorMessage,
+                    index = s.FormattedMessagePlaceholderValues["CollectionIndex"]
+                });
+            return BadRequest(errors);
+        }
+
         var rst = await _mediatr.Send(command);
         if (rst.IsFailed) { return BadRequest(rst); }
 

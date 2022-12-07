@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using PhloSales.Data.EntityContext;
+﻿using PhloSales.Data.EntityContext;
 using PhloSales.Data.Repositories;
+using System.Collections;
 
 namespace PhloSales.Data;
 
@@ -16,7 +16,7 @@ public class PhloSalesUnitOfWork : IUnitOfWork
         _repositories = new Hashtable();
     }
 
-    public IRepository<T> Repository<T>()  where T : class, IEntity
+    public IRepository<T> Repository<T>() where T : class, IEntity
     {
         var type = typeof(T).Name;
 

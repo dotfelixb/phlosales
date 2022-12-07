@@ -6,6 +6,6 @@ public class GetProductQueryValidator : AbstractValidator<GetProductQuery>
 {
     public GetProductQueryValidator()
     {
-        RuleFor(r=> r.Id).NotEmpty().GreaterThan(0);
+        RuleFor(r => r.Id).NotEmpty().GreaterThan(0);
     }
 }

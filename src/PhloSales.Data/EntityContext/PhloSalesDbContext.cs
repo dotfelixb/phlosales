@@ -23,6 +23,3 @@ public class PhloSalesDbContext : DbContext
         base.OnConfiguring(optionsBuilder);
     }
 }
-
-
-

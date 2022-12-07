@@ -36,7 +36,7 @@ public class AuthDatabaseSeeder : IDatabaseSeeder
 
         var adminUser = new ApplicationUser
         {
-            Email =  email,
+            Email = email,
             UserName = email,
             NormalizedUserName = email.ToUpper(),
             EmailConfirmed = true,

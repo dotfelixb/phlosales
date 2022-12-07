@@ -45,5 +45,4 @@ public static class ServiceCollections
         services.Configure<DataProtectionTokenProviderOptions>(options => options.TokenLifespan = TimeSpan.FromHours(48));
         return services;
     }
-
 }

@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -11,7 +12,7 @@ namespace PhloSales.Core.Extensions;
 
 public static class ServiceCollections
 {
-   public static IServiceCollection AddAuthenticationConfig(this IServiceCollection services)
+    public static IServiceCollection AddAuthenticationConfig(this IServiceCollection services)
     {
         var bearerKey = Environment.GetEnvironmentVariable("BEARER_KEY")
              ?? throw new ArgumentNullException($"BEARER_KEY env not provided");
@@ -22,7 +23,7 @@ public static class ServiceCollections
             o.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
         }).AddJwtBearer(o =>
         {
-            o.RequireHttpsMetadata= false;
+            o.RequireHttpsMetadata = false;
             o.SaveToken = true;
             o.TokenValidationParameters = new TokenValidationParameters
             {
@@ -41,12 +42,12 @@ public static class ServiceCollections
 
     public static IServiceCollection AddFluentValidationConfig<T>(this IServiceCollection services)
     {
-        services.AddValidatorsFromAssemblyContaining<T>(includeInternalTypes: true);
+        services.AddValidatorsFromAssemblyContaining<T>(includeInternalTypes: true).AddFluentValidationAutoValidation();
         return services;
     }
 
     public static IServiceCollection AddMediatRConfig<T>(this IServiceCollection services)
-    { 
+    {
         services.AddMediatR(new Assembly[] { typeof(T).Assembly });
         return services;
     }

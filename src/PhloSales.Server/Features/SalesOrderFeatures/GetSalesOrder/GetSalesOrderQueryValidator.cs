@@ -2,7 +2,7 @@
 
 namespace PhloSales.Server.Features.SalesOrderFeatures.GetSalesOrder;
 
-public class GetSalesOrderQueryValidator:AbstractValidator<GetSalesOrderQuery>
+public class GetSalesOrderQueryValidator : AbstractValidator<GetSalesOrderQuery>
 {
     public GetSalesOrderQueryValidator()
     {

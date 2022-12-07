@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using FluentResults;
 using MediatR;
-using Microsoft.Extensions.Logging;
 using PhloSales.Data;
 using PhloSales.Data.Entities;
 
@@ -19,7 +18,6 @@ public class GetCustomerQueryHandler : IRequestHandler<GetCustomerQuery, Result<
         _unitOfWork = unitOfWork;
         _mapper = mapper;
     }
-
 
     public async Task<Result<GetCustomerQueryResult>> Handle(GetCustomerQuery request, CancellationToken cancellationToken)
     {
