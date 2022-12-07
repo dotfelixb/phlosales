@@ -24,8 +24,21 @@ public class SalesDatabaseSeeder : IDatabaseSeeder
 
     private async Task SeedData()
     {
-        _context.Customers.Add(new Entities.Customer { Name = "Jamie" });
-        _context.Products.Add(new Entities.Product { Name = "Dell XPS 13 Laptop" });
+        _context.Customers.AddRange(new[]
+        {
+            new Entities.Customer { Name = "Jamie" }, 
+            new Entities.Customer { Name = "Anna" },
+            new Entities.Customer { Name = "Monica" },
+            new Entities.Customer { Name = "Lisa" },
+            new Entities.Customer { Name = "Harry" },
+        });
+        _context.Products.AddRange(new[]
+        {
+            new Entities.Product { Name = "Dell XPS 13 Laptop" },
+            new Entities.Product { Name = "Thinkpad X1 Carbon Laptop" },
+            new Entities.Product { Name = "Hp Envy Laptop" },
+            new Entities.Product { Name = "Dell Latitute Laptop" },
+        });
         await _context.SaveChangesAsync();
     }
 }
