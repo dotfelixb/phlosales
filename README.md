@@ -21,7 +21,7 @@ cd phlosales
 
 docker compose -f desktop-compose.yml up 
 ```
-`docker compose` might need to download extra images and packages, after `docker compose` is done point your browser to [phlosales.web](http://localhost:3000)
+`docker compose` might need to download extra images and packages, after `docker compose` is done point your browser to [phlosales web](http://localhost:3000)
 ```
 http://localhost:3000
 ```
