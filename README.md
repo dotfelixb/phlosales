@@ -12,10 +12,9 @@ This repository is a monorepo containing four projects
 - [**src/phlosales.data**](https://github.com/dotfelixb/phlosales/tree/main/src/PhloSales.Data) contains the source for data interaction
 
 ## Deployment
-Download and install [**docker desktop**](https://www.docker.com/products/docker-desktop/) for windows or macos (linux need extra attention)
-Recent version of `docker desktop` installation comes with `docker-compose` as `docker compose` added to your path
+Download and install [**docker desktop**](https://www.docker.com/products/docker-desktop/) for windows or macos (linux need extra attention), recent version of `docker desktop` installation comes with `docker-compose` as `docker compose` added to your path
 
-Clone this project and `cd` into the root directory and execute the command below
+Clone and run project with the command below
 ```
 git clone https://github.com/dotfelixb/phlosales.git
 cd phlosales
